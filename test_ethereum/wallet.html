@@ -1,0 +1,94 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./lib/bignumber.min.js"></script>
+<script type="text/javascript" src="./lib/web3-light.js"></script>
+<script type="text/javascript">
+   
+    var Web3 = require('web3');
+    var web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545/")); // 가나슈 서버번호랑 일치시키기
+	// 잔고출력
+    function refreshBalance() { 
+		// tablePlace를 초기화하고 계좌수 만큼 테이블의 행 생성
+		document.getElementById("tablePlace").innerText = " ";
+		var idiv = document.createElement('div');
+		document.getElementById("tablePlace").appendChild(idiv);
+		var list = web3.eth.accounts; // 계정
+		var total = 0;
+		var input ="<table>";
+		for(var i = 0; i< 2; i++){ // 계좌전체 확인 안하고 2개만..
+			var tempB= parseFloat(web3.fromWei(web3.eth.getBalance(list[i]),"ether")); // 특정 주소의 balance 
+			input +="<tr><td>"+ '계좌' + i + "</td><td>" + list[i] + "</td><td>" + tempB +" ETHER</td></tr>";
+			total+=tempB;
+		}
+		//input +="<tr><td><strong> TOTAL </strong></td><td><strong>" + total +" ETHER</strong></td></tr></table>";
+		//이더 합 보여주는 거 없앰
+		idiv.innerHTML = input;	
+		web3.eth.filter('latest').watch(function() { refreshBalance();});
+	}
+	// 사용자의 계좌들을 select로
+	function makeSelect() { 
+		var list = web3.eth.accounts;
+		var select =  document.getElementById('accounts');
+		for(var i = 0; i<2; i++){ // 계좌 2개만 확인..
+			var opt=document.createElement('option');
+			opt.value = list[i];
+			opt.innerHTML = '계좌' + i + " " + list[i];
+			select.appendChild(opt);
+		}
+	}
+	function send(){ 
+	var address = document.getElementById('accounts').value;
+	var toAddress = document.getElementById('toaddr').value;
+	var amount = web3.toWei(document.getElementById('amount').value,"ether");
+	//<h4>password <input id="pass" type="password"/> 비번 입력 X
+	var res = document.createElement('div');
+	document.getElementById("res").appendChild(res);
+	
+	//web3.eth.defaultAccount = address;
+	if(web3.personal.unlockAccount(address,'1111')){ // 계좌 잠금해제
+		web3.eth.sendTransaction({from: address, to:toAddress, value:amount},function(err,result){
+			if(!err) {
+				res.innerHTML = result; // 트랜잭션 값 받아오기
+				console.log('Transaction is sent Successful!('+result+')');
+			}
+			else
+				console.log(err);
+		});
+		}
+	}
+</script>
+<style>
+table {    border-collapse: collapse;    border: 4px solid #bbb;	width: 100%;}
+tr:nth-child(even){background-color: #ccc}
+td, h1 {	padding: 8px;    text-align: left;}
+input, select {
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+button:hover {  background-color: gold;}
+</style>
+</head>
+
+<body>
+    <h1>MyPage</h1>
+	<div id="tablePlace"></div>
+	<h4>송신처  <select id="accounts"></select> </h4>
+	<h4>수신처  <input type="text" id="toaddr" size="40" value=""></h4>
+    <h4>금액  <input id="amount" type="number"/> ETHER</h4>
+	
+	<button onClick="javascript:send()">Send</button></h4>
+	<h4>transactions</h4>
+	<div id="res"></div>
+	<script>
+	refreshBalance();
+	makeSelect();
+	</script>
+</body>
+</html>
