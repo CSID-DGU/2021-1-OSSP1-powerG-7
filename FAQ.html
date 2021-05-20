@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	
+	<!-- 글씨체 -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<style>
+		body{
+			font-family : 'Noto Sans KR', sans-serif;
+		}
+		.img{
+   			position: relative;
+   			background-color : orange;
+   			height: 350px;
+   			width: 100%
+    		background-size: cover;
+		}
+		.filter{
+   			position: absolute;
+   			height: 30%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;
+		}
+		.img .content{
+     		position: absolute;
+     		top:30%;
+     		left:10%;                                                                 
+     		font-size:5rem;
+     		color: white;
+     		z-index: 2;
+		}
+		.restSection{
+			border : 0px solid; 
+			object-fit : contain; 
+			margin : 20px; 
+			width : 200px; 
+			height : 290px; 
+			float : left; 
+			box-shadow : 0px 2px 8px lightgrey
+		}
+		.sectionContents{
+			padding : 10px; 
+			padding-bottom : 20px;
+		}
+		.sectionImg{
+			width : 199px;
+			height : 130px;
+			object-fit : cover;
+		}
+		.goRestButton{
+			float:right; 
+			background-color:orange; 
+			border : 0px; 
+			padding : 5px; 
+			padding-left : 12px; 
+			padding-right : 12px;
+			color : white;
+			box-shadow : 1px 1px 5px darkgray;
+		}
+		.question{
+			font-weight:bold;
+		}
+		.answer{
+			color : #4e4e4e;
+		}
+	</style>
+	
+    <title>서애로 선결제 시스템</title>
+  </head>
+  <body>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+    
+    <!-- 네이게이션바 부분_부트스트랩 활용 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow:0px 1px 8px grey">
+  <div class="container-fluid" style="margin-left : 30px; margin-right : 30px">
+    <!-- <a class="navbar-brand" href="home.html"><b>PowerG</b></a>-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button><!-- 화면 가로폭이 좁을 경우 네비바의 메뉴들이 드롭 다운 형식으로 바뀌게 되고 그 메뉴를 열기 위한 버튼 -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:black">펀딩 방법</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:black">제휴 식당</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:black">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:black">로그인</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+     <!-- 본문 내용이 네비바 밑으로 위치할 수 있도록 하는 공백 역할 -->
+     <div class="container-fluid" style="margin-top:50px"></div>
+     <div class="contents" style="padding:50px;">
+     
+     <br>
+     <h1>FAQ</h1>
+     
+     <div class="table_contents" style="padding:40px;">
+     
+     <!-- FAQ tables -->
+     <table class="table table-hover">
+     <thead style="background-color:orange; color:white;">
+     	<tr>
+     		<th scope="col"></th>
+     		<th scope="col">자주 하는 질문들</th>
+     	</tr>
+     </thead>
+     <tbody>
+     	<tr>
+     		<th scope="row">1</th>
+     		<td class="question">전반적인 결제 과정이 궁금합니다.</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: 주문서 작성 -> 펀딩 성공시 입금계좌 발송 -> 입금확인 및 쿠폰 발급 -> 이용</td>
+     	</tr>
+     	<tr>
+     		<th scope="row">2</th>
+     		<td class="question">주문서 작성 절차가 궁금합니다.</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: 기본적으로 주어진 기한 내, 주문서를 작성 및 취소할 수 있습니다.<br><br>
+     		<b style="font-size: 25px;color:red;">※ 필독 ※</b><br>
+     		<b style="color:black">✓ 주문서를 취소하지 못하는 경우 :</b><br>
+     		&nbsp;&nbsp;i) 주문서의 개수가 최소 주문서의 개수(MIN)을 넘게된다면, 자동으로 펀딩이 실시되어 <b style="color:black">취소가 불가능</b>합니다.<br>
+			&nbsp;&nbsp;ii) 주어진 기한이 아닌경우, 취소할 수 없습니다.<br><br>
+			
+			<b style="color:black">✓주문서를 작성하지 못하는 경우 :</b><br>
+     		&nbsp;&nbsp;i) 최대 주문서의 개수(MAX)를 넘는경우 주문서 작성이 불가능합니다. <br>&nbsp;&nbsp;&nbsp;그러나, 최대 주문서의 개수가 정해지지 않은 식당에 한해서는 주문서 작성이 가능합니다.<br>
+     		&nbsp;&nbsp;ii) 주어진 기한이 아닌경우, 취소할 수 없습니다.
+     		</td>
+     	</tr>
+     	<tr>
+     		<th scope="row">3</th>
+     		<td class="question">펀딩에 실패하면 어떻게 되나요?</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: 아쉽게도 작성하신 주문서가 취소되며, 선결제가 이루어지지 않습니다.</td>
+     	</tr>
+     	<tr>
+     		<th scope="row">4</th>
+     		<td class="question">작성한 주문서는 따로 확인이 가능한가요?</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: mypage에서 확인 가능합니다.</td>
+     	</tr>
+     	<tr>
+     		<th scope="row">5</th>
+     		<td class="question">쿠폰은 언제 수령할 수 있나요?</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: 마감일 다음날 입금계좌 발송 후, 순차적으로 빠른시일 내에 발급 예정입니다. 사용은 쿠폰 수령 후 언제든지 사용가능 합니다.</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="question">- 주문서 작성 개수에 따른 등급별 차등 금액 관련 </td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="answer">&nbsp;&nbsp;: 입금 계좌 발송 시, 1000-2000원 할인 후 입금</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td class="question">- 펀딩 성공 후 입금하지 않는 경우</td>
+     	</tr>
+     	<tr>
+     		<th scope="row"></th>
+     		<td style="color:red">&nbsp;&nbsp;: 영구 이용 정지.</td>
+     	</tr>
+     </tbody>
+		
+	 </table>
+	 
+	 </div>
+</body>
+</html>
