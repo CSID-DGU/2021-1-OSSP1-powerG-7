@@ -19,14 +19,14 @@ contract newCrowdFund {
     event FundTransfer(address backer, uint amount, bool isContribution);
 
     function CrowdFund(
-        address ifSuccessfulSendTo,
-        uint fundingGoalInEthers,
-        uint durationInMinutes,
-        uint etherCostOfEachToken,
-        address addressOfTokenUsedAsReward
+        address ifSuccessfulSendTo, //펀딩 성공시 모금액이 송금될 계정
+        uint fundingGoalInEthers, //펀딩 목표 금액 (이더)
+        uint durationInMinutes, //펀딩이 진행될 기간 (분)
+        uint etherCostOfEachToken, //이더와 토큰의 교환 비율
+        address addressOfTokenUsedAsReward //보상으로 제공될 토큰의 주소값
     ) {
-        beneficiary = ifSuccessfulSendTo;
-        fundingGoal = fundingGoalInEthers * 1 ether;
+        beneficiary = ifSuccessfulSendTo; //잔금
+        fundingGoal = fundingGoalInEthers * 1 ether; 
         deadline = now + durationInMinutes * 1 minutes;
         price = etherCostOfEachToken * 1 ether;
         tokenReward = token(addressOfTokenUsedAsReward);
@@ -45,7 +45,7 @@ contract newCrowdFund {
 
     modifier afterDeadline() { if (now >= deadline) _; }
 
-    function checkGoalReached() afterDeadline {
+    function checkGoalReached() afterDeadline { //펀딩기간 지나면 목표 달성했는지 확인 
         if (amountRaised >= fundingGoal){
             fundingGoalReached = true;
             GoalReached(beneficiary, amountRaised);
@@ -53,7 +53,7 @@ contract newCrowdFund {
         crowdsaleClosed = true;
     }
 
-    function safeWithdrawal() afterDeadline {
+    function safeWithdrawal() afterDeadline { //목표 달성 실패시 환불
         if (!fundingGoalReached) {
             uint amount = balanceOf[msg.sender];
             balanceOf[msg.sender] = 0;
