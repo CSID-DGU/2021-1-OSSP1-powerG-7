@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="C:\Users\SangChan\node_modules\web3\dist\web3.min.js"></script>  <!--주소는 web3.min.js가 있는 위치-->
+  <script type="text/javascript">
+    window.addEventListener('load', function () {
+      if (typeof web3 !== 'undefined') {
+        console.log('Web3 찾음. ' + web3.currentProvider.constructor.name)
+        window.web3 = new Web3(web3.currentProvider);
+      } else {
+        console.log('Web3를 찾지 못함. HTTP Provider을 사용하여 받아오기')
+        window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+      }
+    })
+    function getBalance() {
+      var address, wei, balance address = document.getElementById("address").value
+      try {
+        web3.eth.getBalance(address, function (error, wei) {
+          if (!error) {
+            var balance = web3.utils.fromWei(wei, 'ether');
+            document.getElementById("output").innerHTML = balance + " ETH";
+          }
+        });
+      } catch (err) {
+        document.getElementById("output").innerHTML = err;
+      }
+    }
+  </script>
+</head>
+<body>   <!--html은 홈페이지와 연결예정 현재는 임시로 실행을 위해 만든 페이지-->
+  <h1>계좌 조회를 위한 html</h1>
+  <p>지갑 계정 주소를 입력하시오</p>
+  <input type="text" size="50" id="address" />
+  <button type="button" onClick="getBalance();">실행</button><br />
+  <size = 50>3.172837561475192837527457 ETH
+  <br />
+  <br />
+  <div id="output"></div>
+</body>
+</html>
