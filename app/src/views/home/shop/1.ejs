@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	
+	<title>다시 열린 하얀집</title>
+	
+	<!-- 글씨체 -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<style>
+		body{
+			font-family : 'Noto Sans KR', sans-serif;
+		}
+		.img{
+   			position: relative;
+   			background-color : orange;
+   			height: 350px;
+   			width: 100%;
+    		background-size: cover;
+		}
+		.filter{
+   			position: absolute;
+   			height: 30%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;
+		}
+		.img .content{
+     		position: absolute;
+     		top:30%;
+     		left:10%;                                                                 
+     		font-size:5rem;
+     		color: white;
+     		z-index: 2;
+		}
+		
+	</style>
+
+  </head>
+  <body>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+    
+     <!-- 네이게이션바 부분_부트스트랩 활용 -->
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow:0px 1px 8px grey">
+		<div class="container-fluid" style="margin-left : 30px; margin-right : 30px">
+		  <a class="navbar-brand" href="/"><b>PowerG</b></a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button><!-- 화면 가로폭이 좁을 경우 네비바의 메뉴들이 드롭 다운 형식으로 바뀌게 되고 그 메뉴를 열기 위한 버튼 -->
+		  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+			<ul class="navbar-nav justify-content-end">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#" style="color:black">펀딩 방법</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#" style="color:black">제휴 식당</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/FAQ" style="color:black">FAQ</a>
+			  </li>
+			  <% if(is_logined == false){ %>           
+				  <li class="nav-item">
+				  <a class="nav-link" href="/login" style="color:black">로그인</a>
+				  </li>
+				  <li class="nav-item">
+				  <a class="nav-link" href="/register" style="color:black">회원가입</a>
+				  </li>
+			  <% }else{ %>
+				  <a class="nav-link" href="/logout" style="color:black">로그아웃</a>
+			  <% } %>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+		  <!-- 네비바 끝
+			  코드 출처 : https://getbootstrap.com/docs/5.0/components/navbar/
+				  (부트스트랩 홈페이지 docs->navbar페이지에서 nav항목)
+		   -->
+		   
+     <!-- 본문 내용이 네비바 밑으로 위치할 수 있도록 하는 공백 역할 -->
+     <div class="container-fluid" style="margin-top:50px"></div>
+	 
+    <!-- -->
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+	<h1>다시 열린 하얀집</h1>
+	<div class="row pb-5">
+		<!-- 사진 슬라이드 -->
+		<!-- https://getbootstrap.com/docs/5.0/components/carousel/ -->
+		<div class="col-sm col-md-6">
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="/home/image/1/hayan1.png" class="d-block w-100" alt="다시열린 하얀집 사진"> 
+				</div>
+				<div class="carousel-item">
+					<img src="/home/image/1/hayan2.png" class="d-block w-100" alt="대표메뉴 ㅁㅁ">
+				</div>
+				<div class="carousel-item">
+					<img src="/home/image/1/hayan3.png" class="d-block w-100" alt="메뉴 ㅁㅁ">
+				</div>
+			</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		
+		<!-- 목표 -->
+		<div class="col-sm col-md-6">
+			<div><b class="fs-5">D - 8</b></div>
+			<div>
+				<b class="fs-1">0</b>
+				<b class="fs-4">% 달성</b>
+				<b class="fs-3">/</b> 최대 200%
+				<!-- 물음표(?) 아이콘 -->
+				<!-- https://icons.getbootstrap.com/icons/question-circle/ -->
+				<sup>
+					<a href ="#explain">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+						</svg>
+					</a>
+				</sup>
+			</div>
+			<!-- progress bar -->
+			<!-- https://getbootstrap.com/docs/5.0/components/progress/ -->
+			<div class="progress">
+				<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			<p class="mt-2">총 0장 주문되었습니다.</p>
+			<% if(is_logined == false){ %>  
+				<a href="/login" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>
+			<% }else{ %>
+				<a href="#" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>
+			  <% } %>
+		</div>
+    </div>
+	<h2>가게 소개</h2>
+	<p><p>- 오랜 전통을 자랑하는&lt;하얀집&gt;은 서애로의 대표 맛집이자 많은 동국대학교 학생들의 단골가게입니다. 가성비 좋고 맛있기로 유명한 &#x27;낙지 떡볶이&#x27;를 대표 메뉴로 하며, &#x27;뚝배기 불고기&#x27;, &#x27;계란말이 &#x27;, &#x27;부대찌개&#x27; 등 다양한 안주거리는 물론, 복분자 + 소주 + 사이다를 섞은 &#x27;복소사&#x27;로 많은 사랑을 받고 있습니다.  </p></p>
+  
+    <table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+        <tbody>
+            <tr style="vertical-align: top;" valign="top">
+                <td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 15px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h4><mark> 할인내역 </mark></h4>
+
+	<p>기본가: 20000원 → 할인가: 17000원 (15% 할인, 1인 1회 한정)</p>
+
+	<p>복분자 + 소주 + 사이다 주문 시, 1회당 1000원 할인(현장에서 할인 제공)</p></p>
+
+    <table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+        <tbody>
+            <tr style="vertical-align: top;" valign="top">
+                <td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 15px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h4>사장님의 한마디!</h4>
+    <p><p>&quot;코로나로 힘든 이 시기, 모두 함께 이겨냅시다! &quot;</p></p>
+
+    <table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+        <tbody>
+            <tr style="vertical-align: top;" valign="top">
+                <td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 15px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>정보</h4>
+    <p><p>주소: 서울 중구 서애로 12-20</p>
+
+<p>영업시간: 매일 17:00 - 05:00 <br>*코로나 바이러스로 인한 사회적 거리두기로 시간이 조정될 수 있습니다.</p>
+
+	<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+		<tbody>
+			<tr style="vertical-align: top;" valign="top">
+				<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 15px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h4>위치</h4>
+<!-- (wip)구글 맵 로딩이 김으로 https://getbootstrap.com/docs/4.4/components/spinners/ 를 이용해 로딩중임을 알려줄 방법을 고안하면 좋을 것 같다. -->
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.853790354221!2d126.99730671522596!3d37.558508379799385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca302d491f811%3A0xed546c880ef49f81!2zU2VvdWwsIEphbmdjaHVuZy1kb25nLCDrj5nqta3rjIDtlZnqtZAg67O46rSA!5e0!3m2!1sen!2skr!4v1619710892029!5m2!1sen!2skr" 
+	width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	<footer class="pt-3 my-5 text-muted border-top">
+	<p id="explain">각 점포 사정으로 인해 쿠폰 수량을 한정합니다. 이 제휴 식당의 경우 쿠폰 판매 한도가 <b>20장</b>, 최저 목표 기준의 <b>200%</b>입니다.</p>
+	</footer>
+</div>	
+	
+
+  </body>
+</html>
