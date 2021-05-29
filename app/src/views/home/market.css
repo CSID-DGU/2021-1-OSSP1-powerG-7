@@ -1,0 +1,35 @@
+
+body{
+	font-family : 'Noto Sans KR', sans-serif;
+}
+.img{
+	position: relative;
+	background-color : orange;
+	height: 350px;
+	width: 100%
+	background-size: cover;
+}
+.filter{
+	position: absolute;
+	height: 30%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);                                                                 
+	z-index:1;
+}
+.img .content{
+	position: absolute;
+	top:30%;
+	left:10%;                                                                 
+	font-size:5rem;
+	color: white;
+	z-index: 2;
+}
+/* 슬라이드 사진 크기 */
+.carousel-item {
+	width: 100%;
+}
+.carousel-inner{
+	object-fit: cover;
+	width: 100%;
+	max-height: 250px !important; 
+}
