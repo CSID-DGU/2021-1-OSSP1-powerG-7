@@ -5,12 +5,12 @@ interface token {
 }
 
 contract newCrowdFund {
-    address public beneficiary = 0x4a536A81acDd0aCE840F248dEe1D1F43035aE836;
-    uint public fundingGoal = 30 * 1 ether;
+    address public beneficiary;
+    uint public fundingGoal;
     uint public amountRaised;
-    uint public deadline = now + 10 * 1 minutes;
-    uint public price = 1 * 1 ether;
-    token public tokenReward = token(0xbF9e01E7E6cE03F966df32598359f005e3c6d443);
+    uint public deadline;
+    uint public price;
+    token public tokenReward;
    
     mapping(address => uint256) public balanceOf;
     bool public fundingGoalReached = false;
@@ -19,7 +19,7 @@ contract newCrowdFund {
     event GoalReached(address beneficiaryAddress, uint amountRaisedValue);
     event FundTransfer(address backer, uint amount, bool isContribution);
 
-/*
+
     function CrowdFund(
         address ifSuccessfulSendTo, //펀딩 성공시 모금액이 송금될 계정
         uint fundingGoalInEthers, //펀딩 목표 금액 (이더)
@@ -33,7 +33,6 @@ contract newCrowdFund {
         price = etherCostOfEachToken * 1 ether;
         tokenReward = token(addressOfTokenUsedAsReward);
     }
-*/
 
 
     function () payable {
