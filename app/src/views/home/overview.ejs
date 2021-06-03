@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	
 	<title>제휴 식당 페이지</title>
 	
@@ -54,33 +54,29 @@
 			margin-top: -4rem !important;
 			margin-bottom: 0 !important;
 		}
-		
-		
-		
 	</style>
-
-  </head>
-  <body>
+</head>
+<body>
     <!-- Optional JavaScript; Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     
     <!-- 네이게이션바 부분_부트스트랩 활용 -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow:0px 1px 8px grey">
 		<div class="container-fluid" style="margin-left : 30px; margin-right : 30px">
-			<a class="navbar-brand" href="#"><b>PowerG</b></a>
+			<a class="navbar-brand" href="/"><b>PowerG</b></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button><!-- 화면 가로폭이 좁을 경우 네비바의 메뉴들이 드롭 다운 형식으로 바뀌게 되고 그 메뉴를 열기 위한 버튼 -->
 			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 				<ul class="navbar-nav justify-content-end">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Home</a>
+						<a class="nav-link" aria-current="page" href="/">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#" style="color:black">펀딩 방법</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#" style="color:black">제휴 식당</a>
+						<a class="nav-link active" href="/overview" style="color:black">제휴 식당</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#" style="color:black">FAQ</a>
@@ -100,7 +96,7 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="text-center">제휴 식당</h1>
-        <p class="text-center text-muted">동국대 맛집을 할인된 가격에 만나보세요<p>
+        <p class="text-center text-muted">동국대 맛집을 할인된 가격에 만나보세요</p>
       </div>
     </div>
   </section>
@@ -111,7 +107,7 @@
 			<!-- bootstrap: card -->
 			<!-- https://getbootstrap.com/docs/5.0/components/card/ -->
 			<div class="card h-100 shadow-sm" style="width: auto;">
-				<img src="image/reWhitehouse.JPG" class="card-img-top" size="auto">
+        <img src="/home/image/1/reWhitehouse.JPG" class="card-img-top" size="auto"></img>
 				<!-- bootstrap: progress bar -->
 				<!-- https://getbootstrap.com/docs/5.0/components/progress/ -->
 				<!-- style = "width 0%" 가 보이는 이미지를 설정하고 aria-valuenow, aria-valuemin, aria-valuemax는 accessibility를 의해 존재 -->
@@ -127,18 +123,18 @@
 				<div class="card-body">
 					<span class="fs-8 card-text">D - 8</span>
 					<h5 class="card-title"><b>다시 열린 하얀집</b></h5>
-					<p class="progress-percentage fs-3 text-end text-muted">75%<span class="fs-6"> 달성</span></p><br>
+					<p class="progress-percentage fs-3 text-end text-muted">75%<span class="fs-6"> 달성</span></p></br>
 					<p class="card-text text-muted">복분자주가 맛있는 충무로 술집</p>
 				</div>
 				<div class="card-footer">
-					<a href="#" class="btn btn-warning px-3 mt-auto"><b>자세히 보기</b></a>
+					<a href="/shop/1" class="btn btn-warning px-3 mt-auto"><b>자세히 보기</b></a>
 					<span class="card-text">총 15장 주문되었습니다.</span>
 				</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="card h-100 shadow-sm" style="width: auto;">
-				<img src="image/ciabattamongs.jpg" class="card-img-top" size="auto">
+        <img src="/home/image/2/ciabattamongs.jpg" class="card-img-top" size="auto"></img>
 				<div class="progress">
 					<div class="progress-bar bg-secondary"  role="progressbar" 
 					style="width: 200%" aria-valuenow="200" aria-valuemin="0" aria-valuemax="100"></div>
@@ -148,18 +144,18 @@
 				<div class="card-body">
 					<span class="fs-8 card-text">D - 8</span>
 					<h5 class="card-title"><b>치아바타 몽스</b></h5>
-					<p class="progress-percentage fs-3 text-end text-muted">200%<span class="fs-6"> 달성</span></p><br>
+					<p class="progress-percentage fs-3 text-end text-muted">200%<span class="fs-6"> 달성</span></p></br>
 					<p class="card-text text-muted">매일 직접 구운 치아바타를 사용하는 이탈리아 음식점</p>
 				</div>
 				<div class="card-footer">
-					<a href="#" class="btn btn-secondary px-3"><b>자세히 보기</b></a>
+					<a href="/shop/2" class="btn btn-secondary px-3"><b>자세히 보기</b></a>
 					<span class="card-text">총 40장 주문되었습니다.</span>
 				</div>
 			</div>
 		</div>
 			<div class="col">
 			<div class="card h-100 shadow-sm" style="width: auto;">
-				<img src="image/gimchiman.jpg" class="card-img-top" size="auto">
+        <img src="/home/image/3/gimchiman.jpg" class="card-img-top" size="auto"></img>
 				<div class="progress">
 					<div class="progress-bar bg-secondary"  role="progressbar" 
 					style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
@@ -169,18 +165,18 @@
 				<div class="card-body">
 					<span class="fs-8 card-text">D - 8</span>
 					<h5 class="card-title"><b>김치만선생</b></h5>
-					<p class="progress-percentage fs-3 text-end text-muted">125%<span class="fs-6"> 달성</span></p><br>
+					<p class="progress-percentage fs-3 text-end text-muted">125%<span class="fs-6"> 달성</span></p></br>
 					<p class="card-text text-muted">충무로의 돼지고기김치찌개 전문점</p>
 				</div>
 				<div class="card-footer">
-					<a href="#" class="btn btn-warning px-3"><b>자세히 보기</b></a>
+					<a href="/shop/3" class="btn btn-warning px-3"><b>자세히 보기</b></a>
 					<span class="card-text">총 25장 주문되었습니다.</span>
 				</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="card" style="width: auto;">
-				<img src="image/bokhyangwon.JPG" class="card-img-top" size="auto">
+				<img src="/home/image/4/bokhyangwon.JPG" class="card-img-top" size="auto"></img>
 				<div class="progress">
 					<div class="progress-bar bg-secondary"  role="progressbar" 
 					style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -190,11 +186,11 @@
 				<div class="card-body">
 					<span class="fs-8 card-text">D - 8</span>
 					<h5 class="card-title"><b>복향원</b></h5>
-					<p class="progress-percentage fs-3 text-end text-muted">75%<span class="fs-6"> 달성</span></p><br>
+					<p class="progress-percentage fs-3 text-end text-muted">75%<span class="fs-6"> 달성</span></p></br>
 					<p class="card-text text-muted">마라탕과 꿔바로우가 맛있는 중식당</p>
 				</div>
 				<div class="card-footer">
-					<a href="#" class="btn btn-warning px-3"><b>자세히 보기</b></a>
+					<a href="/shop/4" class="btn btn-warning px-3"><b>자세히 보기</b></a>
 					<span class="card-text">총 15장 주문되었습니다.</span>
 				</div>
 			</div>
