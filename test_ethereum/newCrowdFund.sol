@@ -26,7 +26,7 @@ contract newCrowdFund {
         uint durationInMinutes, //펀딩이 진행될 기간 (분)
         uint etherCostOfEachToken, //이더와 토큰의 교환 비율
         address addressOfTokenUsedAsReward //보상으로 제공될 토큰의 주소값
-    ) {
+    ) public {
         beneficiary = ifSuccessfulSendTo; //잔금
         fundingGoal = fundingGoalInEthers * 1 ether; 
         deadline = now + durationInMinutes * 1 minutes;
