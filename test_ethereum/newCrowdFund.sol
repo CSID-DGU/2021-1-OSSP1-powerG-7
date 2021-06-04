@@ -20,7 +20,7 @@ contract newCrowdFund {
     event FundTransfer(address backer, uint amount, bool isContribution);
 
 
-    function CrowdFund(
+    function newCrowdFund(
         address ifSuccessfulSendTo, //펀딩 성공시 모금액이 송금될 계정
         uint fundingGoalInEthers, //펀딩 목표 금액 (이더)
         uint durationInMinutes, //펀딩이 진행될 기간 (분)
