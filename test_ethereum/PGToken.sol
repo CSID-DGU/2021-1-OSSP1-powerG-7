@@ -27,3 +27,11 @@ contract PGToken {
         return true;
     }
 }
+
+/**
+migration.js 파일에 
+var PGToken = artifacts.require("./PGToken.sol");
+module.exports = function (deployer) {
+  deployer.deploy(PGToken, 1000);//토큰1000개 지급
+};
+ */
