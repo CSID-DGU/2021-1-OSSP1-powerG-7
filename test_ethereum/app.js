@@ -20,18 +20,80 @@ App = {
     return App.initContract();
   },
 
-  initContract: function() {
-    $.getJSON("Token.json", function(data) {
-      // Instantiate a new truffle contract from the artifact
-      App.contracts.Token = TruffleContract(data);
-      // Connect provider to interact with contract
-      App.contracts.Token.setProvider(App.web3Provider);
+initContract: function() {
+  $.getJSON("Token.json", function(data) {
+    // Instantiate a new truffle contract from the artifact
+    App.contracts.Token = TruffleContract(data);
+    // Connect provider to interact with contract
+    App.contracts.Token.setProvider(App.web3Provider);
 
-      return App.render();
+    return App.render();
+  });
+},
+
+render: function() {
+  
+  web3.eth.getCoinbase(function(err, account) {
+    if (err === null) {
+      App.account = account;
+      $("#accountAddress").html("Your Account: " + account);
+    }
+  });
+
+  $(document).on("click", ".btn-token", App.handleToken);
+},
+
+handleToken: function(event) {
+  
+  //기본 이벤트 블럭함
+  event.preventDefault();
+
+  var address_to = $('#_address_to').val(); // 크라우드펀딩 컨트랙트 주소
+  console.log(address_to);
+  var how_many = $('#_how_many').val(); // 보낼 토큰 개수
+  console.log(how_many);
+  //parseInt
+
+  var tokennInstance;
+  
+  //지갑상에 주소를 가져온다. 
+  
+  web3.eth.getAccounts(function(error, accounts) {
+    if (error) {
+      console.log(error);
+    }
+
+    //처음 주소를 가져온다. 
+    var account = accounts[0]; /// 가나슈 첫번째 계정
+   
+    
+    App.contracts.Token.deployed() /// 계약주소인거같음
+      .then(function(instance) {
+        tokenInstance = instance;
+        
+        // 펀딩주소, 토큰 개수, account를 넣어서 adopt 함수를 실행한다. 
+        return tokenInstance.transfer(address_to, how_many, { from: App.account });
+      })
+     
+      .catch(function(err) {
+        console.log(err.message);
+      });
+  });
+  return App.initContract2();
+},//handleToken끝
+
+  initContract2: function() {
+    $.getJSON("newCrowdFund.json", function(data) {
+      // Instantiate a new truffle contract from the artifact
+      App.contracts.newCrowdFund = TruffleContract(data);
+      // Connect provider to interact with contract
+      App.contracts.newCrowdFund.setProvider(App.web3Provider);
+
+      return App.render2();
     });
   },
 
-  render: function() {
+  render2: function() {
     
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
@@ -40,46 +102,61 @@ App = {
       }
     });
 
-    $(document).on("click", ".btn-token", App.handleToken);
+    $(document).on("click", ".btn-checkGoal", App.checkGoal);
+	$(document).on("click", ".btn-sendEther", App.sendEther);
   },
 
-  handleToken: function(event) {
-    
+  checkGoal: function(event) {
     //기본 이벤트 블럭함
     event.preventDefault();
-
-    var address_to = $('#_address_to').val(); // 크라우드펀딩 컨트랙트 주소
-    console.log(address_to);
-    var how_many = $('#_how_many').val(); // 보낼 토큰 개수
-    console.log(how_many);
-    //parseInt
-
-    var tokennInstance;
-    
+    var fundingInstance;
     //지갑상에 주소를 가져온다. 
-    
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
         console.log(error);
       }
-
       //처음 주소를 가져온다. 
-      var account = accounts[0]; /// 내계좌주소..
+      var account = accounts[0]; /// 가나슈 첫번째 계정
      
-      
-      App.contracts.Token.deployed() /// 계약주소인거같음 아마도...
+      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음
         .then(function(instance) {
-          tokenInstance = instance;
-          
-          // 펀딩주소, 토큰 개수, account를 넣어서 adopt 함수를 실행한다. 
-          return tokenInstance.transfer(address_to, how_many, { from: App.account });
+          fundingInstance = instance;
+        // 펀딩기간끝나도 목표달성했는지 확인
+          return fundingInstance.checkGoalReached({ from: App.account });
         })
-       
         .catch(function(err) {
           console.log(err.message);
         });
     });
-  }//handleToken끝
+  }, //checkGoal끝
+  
+  sendEther: function(event) {
+  event.preventDefault();
+    var fundingInstance;
+    //지갑상에 주소를 가져온다. 
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+      //처음 주소를 가져온다. 
+      var account = accounts[0]; /// 가나슈 첫번째 계좌주소
+     
+      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음
+        .then(function(instance) {
+          fundingInstance = instance;
+
+          console.log(fundingInstance.amountRaised)
+          // 목표 달성 못했을때 구매자들한테 이더 환불
+          return fundingInstance.safeWithdrawal({ from: App.account });
+         
+        })
+        .catch(function(err) {
+          console.log(err.message);
+        });
+    });
+  
+  } // sendEther끝
+  
  
 }; //App닫는거
 
