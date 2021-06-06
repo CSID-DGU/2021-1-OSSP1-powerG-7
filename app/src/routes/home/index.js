@@ -11,6 +11,7 @@ router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get("/FAQ", ctrl.output.FAQ);
 router.get("/logout", ctrl.output.logout);
+router.get("/overview", ctrl.output.overview);
 router.get("/shop/1", ctrl.output.shop1);
 router.get("/shop/2", ctrl.output.shop2);
 router.get("/shop/3", ctrl.output.shop3);
