@@ -11,6 +11,11 @@ const FileStore = require('session-file-store')(session); // 세션을 파일에
 const cookieParser = require('cookie-parser');
 
 const app = express();
+var port = 3000;
+app.listen(port, function(){
+	console.log('server on! http://localhost:'+port);
+});
+
 
 // 라우팅
 const home = require("./src/routes/home");
