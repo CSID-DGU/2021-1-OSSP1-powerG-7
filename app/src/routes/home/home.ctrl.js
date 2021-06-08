@@ -47,6 +47,17 @@ const output = {
             });
         }
     },
+	dev: (req, res) => {
+        if(req.session.is_logined == true){
+            res.render("home/dev",{
+                is_logined : true
+            });
+        }else{
+            res.render("home/dev",{
+                is_logined : false
+            });
+        }
+    },
     shop1: (req, res) => {
         if(req.session.is_logined == true){
             res.render("home/shop/1",{
