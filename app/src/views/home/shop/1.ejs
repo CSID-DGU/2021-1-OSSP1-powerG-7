@@ -146,10 +146,14 @@
 				<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
 			<p class="mt-2">총 장 주문되었습니다.</p>
-      크라우드펀딩 컨트랙트 주소 : <input type="text" id="_address_to" size="20"/><br/>
-      <button class="btn btn-warning btn-start" type="button">컨트랙트 시작 </button><br/>
-      보낼 토큰 개수 : <br><input type="text" id="_how_many" size="20"/><br/>
-    <button class="btn btn-warning btn-lg px-4 btn-token" type="button">Send</button>
+
+    <button class="enableEthereumButton">연결된 계정확인</button><br/>
+    <h3>Account: <span class="showAccount"></span></h3><br/>
+
+      식당 계좌 주소: <input type="text" id="_address_to" size="20"/><br/>
+      송금할 이더 : &nbsp;&nbsp;&nbsp;<input type="text" id="_how_many" size="20"/><br/>
+    <button style="margin-top:5px" class="sendEthButton btn btn-warning btn-lg px-4">송금하기</button>
+      <!--<a href="index0.html" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>-->
       <!--
 			<% if(is_logined == false){ %>
 				<a href="/login" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>
