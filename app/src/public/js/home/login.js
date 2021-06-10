@@ -1,5 +1,10 @@
 "use strict";
-
+/*
+var hw = document.getElementById('hw');
+hw.addEventListener('click', function(){
+    alert('Hello world');
+})
+*/
 const id = document.querySelector("#id");
 const pw = document.querySelector("#pw");
 const loginBtn = document.querySelector("#button");
@@ -11,7 +16,7 @@ function login() {
         id: id.value,
         pw: pw.value,
     };
-
+	alert('Hello world');
     fetch("/login", {
         method: "POST",
         headers: {

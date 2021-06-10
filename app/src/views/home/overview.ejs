@@ -57,13 +57,20 @@
 	</style>
      <!-- Optional JavaScript; Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/js/dev/bootstrap.min.js"></script>
+	<script src="/js/dev/web3.min.js"></script>
+	<script src="/js/dev/truffle-contract.js"></script>
+    <script src="/js/dev/app.js" defer></script>  
     <script>
-
+/*
         Web3 = require('web3');
         var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 
         var fs = requre('fs');
-        var Contract = JSON.parse(fs.readFileSync('../../build/contracts/newCrowdFund.json', 'utf8'));
+        var Contract = JSON.parse(fs.readFileSync('/build/contracts/newCrowdFund.json', 'utf8'));
         var abi = Contract.abi;
 
         var contract1 = new web3.eth.Contract(abi, 0x67984589DB5e0e13081Af737d2Cd7cF1355EaC1f); // contract address
@@ -80,7 +87,15 @@
             alert("dead: " + dead);
             console.log("hi");
         }
+*/
+        function myFunction(){
+            App.init();
+            App.deadlineCheck();
+            var App = App || {};
+        }
+
     </script>
+    
 </head>
 <body onload="myFunction()">
     <!-- 네이게이션바 부분_부트스트랩 활용 -->

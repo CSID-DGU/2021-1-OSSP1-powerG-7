@@ -1,7 +1,7 @@
-var hw = document.getElementById('hw');
-hw.addEventListener('click', function(){
-    alert('Hello world');
-})
+//var hw = document.getElementById('hw');
+//hw.addEventListener('click', function(){
+//    alert('Hello world');
+//})
 
 App = {
     web3Provider: null,
@@ -73,7 +73,7 @@ App = {
       });
     $(document).on("click", ".btn-token", App.handleToken);
     $(document).on("click", ".btn-checkGoal", App.checkGoal);
-      $(document).on("click", ".btn-sendEther", App.sendEther);
+    $(document).on("click", ".btn-sendEther", App.sendEther);
   
     $(document).on("click", ".btn-amountCheck", App.amountCheck);
     $(document).on("click", ".btn-beneficiary", App.beneficiaryCheck);
