@@ -373,9 +373,4 @@ App = {
                   } //price 끝
   
   }; //App닫는거
-  
-  $(function() {
-    $(window).load(function() {
-      App.init();
-    });
-  });
+
