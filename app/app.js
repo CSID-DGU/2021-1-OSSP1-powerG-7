@@ -11,6 +11,10 @@ const FileStore = require('session-file-store')(session); // 세션을 파일에
 const cookieParser = require('cookie-parser');
 
 const app = express();
+var port = 3000;
+app.listen(port, function(){
+	console.log('server on! http://localhost:'+port);
+});
 
 // 라우팅
 const home = require("./src/routes/home");
@@ -21,6 +25,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static(`${__dirname}/src/views`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨
 app.use(express.static(`${__dirname}/src/public`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨
+app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser.json()); //body-parser을 사용함으로써, 디폴트값인 undefined대신 아이디와 비밀번호를 받아올수있음.
 
 // 세션
@@ -47,6 +52,5 @@ app.use(session({
 // URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use("/", home); //use -> 미들 웨어를 등록해주는 메소드.
-
 
 module.exports = app;
