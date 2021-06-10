@@ -16,7 +16,6 @@ app.listen(port, function(){
 	console.log('server on! http://localhost:'+port);
 });
 
-
 // 라우팅
 const home = require("./src/routes/home");
 
@@ -26,6 +25,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static(`${__dirname}/src/views`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨
 app.use(express.static(`${__dirname}/src/public`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨
+app.use(express.static(`${__dirname}/build`));
 app.use(bodyParser.json()); //body-parser을 사용함으로써, 디폴트값인 undefined대신 아이디와 비밀번호를 받아올수있음.
 
 // 세션

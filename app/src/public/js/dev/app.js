@@ -1,3 +1,8 @@
+var hw = document.getElementById('hw');
+hw.addEventListener('click', function(){
+    alert('Hello world');
+})
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -22,7 +27,7 @@ App = {
   },
 
   initContract: function () {
-      $.getJSON("Token.json", function (data) {
+      $.getJSON("/contracts/Token.json", function (data) {
           // Instantiate a new truffle contract from the artifact
           App.contracts.Token = TruffleContract(data);
           // Connect provider to interact with contract
@@ -84,7 +89,7 @@ App = {
   },//handleToken끝
 
   initContract2: function () {
-      $.getJSON("newCrowdFund.json", function (data) {
+      $.getJSON("/contracts/newCrowdFund.json", function (data) {
           // Instantiate a new truffle contract from the artifact
           App.contracts.newCrowdFund = TruffleContract(data);
           // Connect provider to interact with contract
@@ -372,3 +377,12 @@ $(function () {
       App.init();
   });
 });
+
+
+/*
+$(function () {
+  $(window).load(function () {
+      init();
+  });
+});
+*/
