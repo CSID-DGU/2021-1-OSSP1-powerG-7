@@ -16,7 +16,6 @@ function login() {
         id: id.value,
         pw: pw.value,
     };
-	alert('Hello world');
     fetch("/login", {
         method: "POST",
         headers: {
