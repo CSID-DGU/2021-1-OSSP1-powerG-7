@@ -97,20 +97,25 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black">펀딩 방법</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black">제휴 식당</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black">FAQ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black">로그인</a>
-        </li>
+			<a class="nav-link active" aria-current="page" href="/">Home</a>
+			</li>
+			
+			<li class="nav-item">
+			<a class="nav-link" href="/overview" style="color:black">제휴 식당</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" href="/FAQ" style="color:black">FAQ</a>
+			</li>
+			<% if(is_logined == false){ %>           
+				<li class="nav-item">
+				<a class="nav-link" href="/login" style="color:black">로그인</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link" href="/register" style="color:black">회원가입</a>
+				</li>
+			<% }else{ %>
+				<a class="nav-link" href="/logout" style="color:black">로그아웃</a>
+			<% } %>
       </ul>
     </div>
   </div>
@@ -136,20 +141,23 @@
      <tbody>
      	<tr>
      		<th scope="row">1</th>
-     		<td class="question">전반적인 결제 과정이 궁금합니다.</td>
+     		<td class="question">선결제 시스템이 무엇인가요?</td>
      	</tr>
      	<tr>
      		<th scope="row"></th>
-     		<td class="answer">&nbsp;&nbsp;: 주문서 작성 -> 펀딩 성공시 입금계좌 발송 -> 입금확인 및 쿠폰 발급 -> 이용</td>
+     		<td class="answer">&nbsp;: 점포가 지정한 수의 손님에게 저렴한 가격으로 점포 이용권을 선결제로 판매하여
+				 손님에게는 저렴한 가격을,<br> 
+				 &nbsp;&nbsp;&nbsp;점주에게는 당장의 판매를 보장함으로써 win-win 효과를 불러일으킬 수 있는 시스템입니다
+			 </td>
      	</tr>
      	<tr>
      		<th scope="row">2</th>
-     		<td class="question">주문서 작성 절차가 궁금합니다.</td>
+     		<td class="question">어떻게 참여하나요?</td>
      	</tr>
      	<tr>
      		<th scope="row"></th>
-     		<td class="answer">&nbsp;&nbsp;: 기본적으로 주어진 기한 내, 주문서를 작성 및 취소할 수 있습니다.<br><br>
-     		<b style="font-size: 25px;color:red;">※ 필독 ※</b><br>
+     		<td class="answer">&nbsp;: 식당 상세페이지에서 식당의 컨트랙트 주소와 입금할 금액(이더)을 입력하고 송금하기를 누르면 참여할 수 있습니다<br>
+     		<!--b style="font-size: 25px;color:red;">※ 필독 ※</b><br>
      		<b style="color:black">✓ 주문서를 취소하지 못하는 경우 :</b><br>
      		&nbsp;&nbsp;i) 주문서의 개수가 최소 주문서의 개수(MIN)을 넘게된다면, 자동으로 펀딩이 실시되어 <b style="color:black">취소가 불가능</b>합니다.<br>
 			&nbsp;&nbsp;ii) 주어진 기한이 아닌경우, 취소할 수 없습니다.<br><br>
@@ -157,25 +165,25 @@
 			<b style="color:black">✓주문서를 작성하지 못하는 경우 :</b><br>
      		&nbsp;&nbsp;i) 최대 주문서의 개수(MAX)를 넘는경우 주문서 작성이 불가능합니다. <br>&nbsp;&nbsp;&nbsp;그러나, 최대 주문서의 개수가 정해지지 않은 식당에 한해서는 주문서 작성이 가능합니다.<br>
      		&nbsp;&nbsp;ii) 주어진 기한이 아닌경우, 취소할 수 없습니다.
-     		</td>
+     		</td-->
      	</tr>
      	<tr>
      		<th scope="row">3</th>
-     		<td class="question">펀딩에 실패하면 어떻게 되나요?</td>
+     		<td class="question">펀딩 목표에 달성하지 못하면 어떻게 되나요? </td>
      	</tr>
      	<tr>
      		<th scope="row"></th>
-     		<td class="answer">&nbsp;&nbsp;: 아쉽게도 작성하신 주문서가 취소되며, 선결제가 이루어지지 않습니다.</td>
+     		<td class="answer">&nbsp;: 마이페이지에서 환불버튼을 눌러서 환불신청을 하면 금액을 돌려받을 수 있습니다</td>
      	</tr>
      	<tr>
      		<th scope="row">4</th>
-     		<td class="question">작성한 주문서는 따로 확인이 가능한가요?</td>
+     		<td class="question">지급받은 토큰은 어떻게 사용하나요? </td>
      	</tr>
      	<tr>
      		<th scope="row"></th>
-     		<td class="answer">&nbsp;&nbsp;: mypage에서 확인 가능합니다.</td>
+     		<td class="answer">&nbsp;: 식당에서 식당 주인의 계정으로 토큰을 입금하시면 됩니다</td>
      	</tr>
-     	<tr>
+     	<!--tr>
      		<th scope="row">5</th>
      		<td class="question">쿠폰은 언제 수령할 수 있나요?</td>
      	</tr>
@@ -198,7 +206,7 @@
      	<tr>
      		<th scope="row"></th>
      		<td style="color:red">&nbsp;&nbsp;: 영구 이용 정지.</td>
-     	</tr>
+     	</tr-->
      </tbody>
 		
 	 </table>
