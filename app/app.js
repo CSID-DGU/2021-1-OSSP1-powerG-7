@@ -22,6 +22,8 @@ const home = require("./src/routes/home");
 // 앱 세팅
 app.set("views", "./src/views");
 app.set("view engine", "ejs"); 
+app.engine('.html', require('ejs').renderFile);
+
 
 app.use(express.static(`${__dirname}/src/views`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨
 app.use(express.static(`${__dirname}/src/public`)); //dirname은 app.js가 현재 있는 dir, 프런트 html과 연결됨

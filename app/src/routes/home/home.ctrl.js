@@ -58,6 +58,17 @@ const output = {
             });
         }
     },
+	mypage: (req, res) => {
+        if(req.session.is_logined == true){
+            res.render("home/mypage",{
+                is_logined : true
+            });
+        }else{
+            res.render("home/mypage",{
+                is_logined : false
+            });
+        }
+    },
     shop1: (req, res) => {
         if(req.session.is_logined == true){
             res.render("home/shop/1",{
