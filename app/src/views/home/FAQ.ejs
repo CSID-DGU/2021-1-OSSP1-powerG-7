@@ -97,25 +97,29 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="/">Home</a>
-			</li>
-			
-			<li class="nav-item">
-			<a class="nav-link" href="/overview" style="color:black">제휴 식당</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="/FAQ" style="color:black">FAQ</a>
-			</li>
-			<% if(is_logined == false){ %>           
-				<li class="nav-item">
-				<a class="nav-link" href="/login" style="color:black">로그인</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link" href="/register" style="color:black">회원가입</a>
-				</li>
-			<% }else{ %>
-				<a class="nav-link" href="/logout" style="color:black">로그아웃</a>
-			<% } %>
+            <a class="nav-link" href="/" style="color:black">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/overview" style="color:black">제휴 식당</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/FAQ">FAQ</a>
+        </li>
+        <% if(is_logined == false){ %>
+        <li class="nav-item">
+            <a class="nav-link" href="/login" style="color:black">로그인</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register" style="color:black">회원가입</a>
+        </li>
+        <% }else{ %>
+        <li class="nav-item">
+            <a class="nav-link" href="/mypage" style="color:black">Mypage</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout" style="color:black">로그아웃</a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </div>

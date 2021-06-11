@@ -76,21 +76,30 @@
 			</button><!-- 화면 가로폭이 좁을 경우 네비바의 메뉴들이 드롭 다운 형식으로 바뀌게 되고 그 메뉴를 열기 위한 버튼 -->
 			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 				<ul class="navbar-nav justify-content-end">
-					<li class="nav-item">
-						<a class="nav-link" href="/" style="color:black">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#" style="color:black">펀딩 방법</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="/overview">제휴 식당</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#" style="color:black">FAQ</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#" style="color:black">로그인</a>
-					</li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/" style="color:black">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/overview">제휴 식당</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/FAQ" style="color:black">FAQ</a>
+                      </li>
+                      <% if(is_logined == false){ %>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/login" style="color:black">로그인</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/register" style="color:black">회원가입</a>
+                      </li>
+                      <% }else{ %>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/mypage" style="color:black">Mypage</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/logout" style="color:black">로그아웃</a>
+                      </li>
+                      <% } %>
 				</ul>
 			</div>
 		</div>
