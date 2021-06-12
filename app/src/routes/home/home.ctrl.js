@@ -69,6 +69,17 @@ const output = {
             });
         }
     },
+    dev2: (req, res) => {
+        if (req.session.is_logined == true) {
+            res.render("home/dev2", {
+                is_logined: true
+            });
+        } else {
+            res.render("home/dev2", {
+                is_logined: false
+            });
+        }
+    },
     mypage: (req, res) => {
         if (req.session.is_logined == true) {
             res.render("home/mypage", {
