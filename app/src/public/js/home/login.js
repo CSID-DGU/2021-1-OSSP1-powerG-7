@@ -1,10 +1,5 @@
 "use strict";
-/*
-var hw = document.getElementById('hw');
-hw.addEventListener('click', function(){
-    alert('Hello world');
-})
-*/
+
 const id = document.querySelector("#id");
 const pw = document.querySelector("#pw");
 const loginBtn = document.querySelector("#button");
@@ -26,9 +21,9 @@ function login() {
         .then((res) => res.json())
         .then((res) => {
             if (res.success) {
-                location.href = "/"; //이동할 경로
+                location.href = "/";
             } else{
-                alert(res.msg);
+                alert("로그인에 실패하였습니다.");
             }
         })
         .catch((err) => {
