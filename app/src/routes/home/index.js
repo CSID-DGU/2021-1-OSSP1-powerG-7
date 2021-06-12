@@ -13,6 +13,7 @@ router.get("/FAQ", ctrl.output.FAQ);
 router.get("/logout", ctrl.output.logout);
 router.get("/overview", ctrl.output.overview);
 router.get("/dev", ctrl.output.dev);
+router.get("/dev2", ctrl.output.dev2);
 router.get("/mypage", ctrl.output.mypage);
 router.get("/shop/1", ctrl.output.shop1);
 router.get("/shop/2", ctrl.output.shop2);
