@@ -3,17 +3,16 @@
 //    alert('Hello world');
 //})
 
+var nowAmount;
+var now = new Date();
+var goal;
+var nowprogress;
+
 App = {
     web3Provider: null,
     contracts: {},
 
     init: function() {
-      if (typeof window.ethereum !== 'undefined') {
-        App.web3Provider = web3.currentProvider;
-        web3 = new Web3(web3.currentProvider);
-        console.log('MetaMask is installed!');
-      }
-      //App.start();      //  이 부분 주석해제하고 실행(상세페이지 펀딩할때)
       return App.initWeb3();
     },
 
@@ -51,7 +50,9 @@ App = {
         $("#accountAddress").html("Your Account: " + account);
       }
     });
-    $(document).on("click", ".btn-start", App.startcontract);
+    $(document).ready(App.startcontract);
+    //$(document).on("click", ".btn-start", App.startcontract);
+
   },
 
   startcontract: function(){
@@ -77,6 +78,62 @@ App = {
           $("#accountAddress").html("Your Account: " + account);
         }
       });
+
+
+      //컨트랙트 정보 받아오기
+      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+        .then(function(instance) {
+          fundingInstance = instance;
+          return fundingInstance.amountRaised();
+
+        }).then(function(amountRaised){ //현채 참여수?
+          //nowAmount = amountRaised;
+          nowAmount = 5;
+          $('#fd_nowAmount').html("" + amountRaised);
+          console.log("amountRaised: "  + amountRaised);
+
+          return fundingInstance.beneficiary();
+
+        }).then(function(beneficiary){  //펀딩 컨트랙트 주소
+        //$('#fd_beneficiary').html(" " + beneficiary);
+        console.log("beneiciary: "  + beneficiary);
+
+          return fundingInstance.deadline();
+
+        }).then(function(deadline){   //마감기한
+          $('#fd_dline').html("" + deadline);
+          console.log("deadline: "  + deadline);
+
+          return fundingInstance.fundingGoal();
+
+        }).then(function(fundingGoal){   //목표금액
+          //goal = fundingGoal;
+          goal = 30;  //임시값 넣어
+          nowprogress = parseInt(nowAmount/goal*100); //펀딩 진행률 (소수점은 날림)
+          console.log("nowprogress: "  + nowprogress);
+          $('#pgbar_1').attr("style", "width:"+nowprogress+"%"); //게이지바 진행률 변경
+          $('#pgnum_1').html("" + nowprogress);
+          $('#fd_goal').html("" + fundingGoal);
+          console.log("fundingGoal: "  + fundingGoal);
+
+          return fundingInstance.fundingGoalReached();
+
+        }).then(function(fundingGoalReached){   //목표달성여부
+          //var test = amountRaised;
+          //$('#fd_goalReached').html("" + fundingGoalReached);
+          console.log("fundingGoalReached: "  + fundingGoalReached);
+
+          return fundingInstance.price();
+
+        }).then(function(price){  //펀딩금액
+          //var test = amountRaised;
+          $('#fd_price').html("" + price);
+          console.log("price: "  + price);
+        })
+        .catch(function(err) {
+          console.log(err.message);
+        });//컨트랙트정보받아오기
+
     $(document).on("click", ".btn-token", App.handleToken);
     $(document).on("click", ".btn-checkGoal", App.checkGoal);
       $(document).on("click", ".btn-sendEther", App.sendEther);
@@ -91,54 +148,6 @@ App = {
     $(document).on("click", ".btn-price", App.priceCheck);
 
     },
-
-
-    start : function() {
-      const ethereumButton = document.querySelector('.enableEthereumButton');
-    const sendEthButton = document.querySelector('.sendEthButton');
-
-    web3.eth.getAccounts(function(error, accounts) {
-      if (error) {
-        console.log(error);
-      }
-      //처음 주소를 가져온다.
-      var account = accounts[0]; /// 내계좌주소..
-    //$('#_address_to')
-    //Sending Ethereum to an address
-    sendEthButton.addEventListener('click', () => {
-      ethereum
-        .request({
-          method: 'eth_sendTransaction',
-          params: [
-            {
-              from: account,
-              to: $('#_address_to').val(),
-              value: (10**18 * parseInt($('#_how_many').val())).toString(16) , // 16진수
-             // gasPrice: '0x09184e72a000',
-              //gas: '0x2710',
-            },
-          ],
-        })
-        .then((txHash) => console.log(txHash))
-        .catch((error) => console.error);
-    });
-
-    })
-
-    const showAccount = document.querySelector('.showAccount');
-
-    ethereumButton.addEventListener('click', () => {
-       getAccount();
-    });
-
-    async function getAccount() {
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts[0];
-    showAccount.innerHTML = account;
-    }
-
-  },
-
 
     handleToken: function(event) {
 
@@ -168,10 +177,18 @@ App = {
           .then(function(instance) {
             tokenInstance = instance;
 
+            return fundingInstance.amountRaised();
+
+          }).then(function(amountRaised){ //현채 참여수
+            //var test = amountRaised;
+            amountRaised = amountRaised + 1;
+            console.log("amountRaised: "  + amountRaised);
+
             // 펀딩주소, 토큰 개수, account를 넣어서 adopt 함수를 실행한다.
             return tokenInstance.transfer(address_to, how_many, { from: App.account });
-          })
 
+
+        })
           .catch(function(err) {
             console.log(err.message);
           });
