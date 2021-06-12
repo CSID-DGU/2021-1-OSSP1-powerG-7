@@ -3,42 +3,42 @@
 //    alert('Hello world');
 //})
 
-var nowAmount;
+var nowAmount2;
 var now = new Date();
-var goal;
-var nowprogress;
+var goal2;
+var nowprogress2;
 
-App = {
+App2 = {
     web3Provider: null,
     contracts: {},
 
     init: function() {
-      return App.initWeb3();
+      return App2.initWeb3();
     },
 
     initWeb3: function() {
       // TODO: refactor conditional
       if (typeof web3 !== 'undefined') {
         // If a web3 instance is already provided by Meta Mask.
-        App.web3Provider = web3.currentProvider;
+        App2.web3Provider = web3.currentProvider;
         web3 = new Web3(web3.currentProvider);
       } else {
         // Specify default instance if no web3 instance provided
-        App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
-        web3 = new Web3(App.web3Provider);
+        App2.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+        web3 = new Web3(App2.web3Provider);
       }
-      return App.initContract();
+      return App2.initContract();
 
     },
 
   initContract: function() {
     $.getJSON("/contracts/Token2.json", function(data) {
       // Instantiate a new truffle contract from the artifact
-      App.contracts.Token = TruffleContract(data);
+      App2.contracts.Token = TruffleContract(data);
       // Connect provider to interact with contract
-      App.contracts.Token.setProvider(App.web3Provider);
+      App2.contracts.Token.setProvider(App2.web3Provider);
 
-      return App.render();
+      return App2.render();
     });
   },
 
@@ -46,27 +46,27 @@ App = {
 
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
-        App.account = account;
+        App2.account = account;
         $("#accountAddress").html("Your Account: " + account);
       }
     });
-    $(document).ready(App.startcontract);
-    //$(document).on("click", ".btn-start", App.startcontract);
+    $(document).ready(App2.startcontract);
+    //$(document).on("click", ".btn-start", App2.startcontract);
 
   },
 
   startcontract: function(){
-    return App.initContract2();
+    return App2.initContract2();
   },
 
     initContract2: function() {
       $.getJSON("/contracts/newCrowdFund2.json", function(data) {
         // Instantiate a new truffle contract from the artifact
-        App.contracts.newCrowdFund = TruffleContract(data);
+        App2.contracts.newCrowdFund = TruffleContract(data);
         // Connect provider to interact with contract
-        App.contracts.newCrowdFund.setProvider(App.web3Provider);
+        App2.contracts.newCrowdFund.setProvider(App2.web3Provider);
 
-        return App.render2();
+        return App2.render2();
       });
     },
 
@@ -74,22 +74,22 @@ App = {
 
       web3.eth.getCoinbase(function(err, account) {
         if (err === null) {
-          App.account = account;
+          App2.account = account;
           $("#accountAddress").html("Your Account: " + account);
         }
       });
 
 
       //컨트랙트 정보 받아오기
-      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+      App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
         .then(function(instance) {
           fundingInstance = instance;
           return fundingInstance.amountRaised();
 
         }).then(function(amountRaised){ //현채 참여수?
-          nowAmount = amountRaised;
-          $('#fd_nowAmount').html("" + amountRaised / 10**18);
-          console.log("amountRaised: "  + amountRaised);
+          nowAmount2 = amountRaised;
+          $('#fd_nowAmount2').html("" + amountRaised / 10**18);
+          console.log("amountRaised2: "  + amountRaised);
 
           return fundingInstance.beneficiary();
 
@@ -100,7 +100,7 @@ App = {
           return fundingInstance.deadline();
 
         }).then(function(deadline){   //마감기한
-          
+
           function change_date(t) {
             var date2 = new Date(t*1000);
             var year = date2.getFullYear();
@@ -114,19 +114,19 @@ App = {
             }
 
             deadline = change_date(deadline);
-          
-          $('#fd_dline').html("" + deadline);
+
+          $('#fd_dline2').html("" + deadline);
           console.log("deadline: "  + deadline);
 
           return fundingInstance.fundingGoal();
 
         }).then(function(fundingGoal){   //목표금액
-          goal = fundingGoal;
-          nowprogress = parseInt(nowAmount/goal*100); //펀딩 진행률 (소수점은 날림)
-          console.log("nowprogress: "  + nowprogress);
-          $('#pgbar_1').attr("style", "width:"+nowprogress+"%"); //게이지바 진행률 변경
-          $('#pgnum_1').html("" + nowprogress);
-          $('#fd_goal').html("" + fundingGoal / 10**18);
+          goal2 = fundingGoal;
+          nowprogress2 = parseInt(nowAmount2/goal2*100); //펀딩 진행률 (소수점은 날림)
+          console.log("nowprogress: "  + nowprogress2);
+          $('#pgbar_2').attr("style", "width:"+nowprogress2+"%"); //게이지바 진행률 변경
+          $('#pgnum_2').html("" + nowprogress2);
+          $('#fd_goal2').html("" + fundingGoal / 10**18);
           console.log("fundingGoal: "  + fundingGoal);
 
           return fundingInstance.fundingGoalReached();
@@ -139,26 +139,25 @@ App = {
           return fundingInstance.price();
 
         }).then(function(price){  //펀딩금액
-          //var test = amountRaised;
-          $('#fd_price').html("" + price / 10**18 + " ether");
+          $('#fd_price2').html("" + price / 10**18 + " ether");
           console.log("price: "  + price);
         })
         .catch(function(err) {
           console.log(err.message);
         });//컨트랙트정보받아오기
 
-    $(document).on("click", ".btn-token", App.handleToken);
-    $(document).on("click", ".btn-checkGoal", App.checkGoal);
-      $(document).on("click", ".btn-sendEther", App.sendEther);
+    $(document).on("click", ".btn-token", App2.handleToken);
+    $(document).on("click", ".btn-checkGoal", App2.checkGoal);
+      $(document).on("click", ".btn-sendEther", App2.sendEther);
 
-    $(document).on("click", ".btn-amountCheck", App.amountCheck);
-    $(document).on("click", ".btn-beneficiary", App.beneficiaryCheck);
-    $(document).on("click", ".btn-crowdsaleClosed", App.colsedCheck);
+    $(document).on("click", ".btn-amountCheck", App2.amountCheck);
+    $(document).on("click", ".btn-beneficiary", App2.beneficiaryCheck);
+    $(document).on("click", ".btn-crowdsaleClosed", App2.colsedCheck);
 
-    $(document).on("click", ".btn-deadline", App.deadlineCheck);
-    $(document).on("click", ".btn-fundingGoal", App.fundingGoalCheck);
-    $(document).on("click", ".btn-fundingGoalReached", App.fundingGoalReachedCheck);
-    $(document).on("click", ".btn-price", App.priceCheck);
+    $(document).on("click", ".btn-deadline", App2.deadlineCheck);
+    $(document).on("click", ".btn-fundingGoal", App2.fundingGoalCheck);
+    $(document).on("click", ".btn-fundingGoalReached", App2.fundingGoalReachedCheck);
+    $(document).on("click", ".btn-price", App2.priceCheck);
 
     },
 
@@ -167,9 +166,9 @@ App = {
       //기본 이벤트 블럭함
       event.preventDefault();
 
-      var address_to = $('#_address_to').val(); // 크라우드펀딩 컨트랙트 주소
+      var address_to = $('#_address_to2').val(); // 크라우드펀딩 컨트랙트 주소
       console.log(address_to);
-      var how_many = $('#_how_many').val(); // 보낼 토큰 개수
+      var how_many = $('#_how_many2').val(); // 보낼 토큰 개수
       console.log(how_many);
       //parseInt
 
@@ -186,7 +185,7 @@ App = {
         var account = accounts[0]; /// 내계좌주소..
 
 
-        App.contracts.Token.deployed() /// 계약주소인거같음 아마도...
+        App2.contracts.Token.deployed() /// 계약주소인거같음 아마도...
           .then(function(instance) {
             tokenInstance = instance;
 
@@ -198,7 +197,7 @@ App = {
             console.log("amountRaised: "  + amountRaised);
 
             // 펀딩주소, 토큰 개수, account를 넣어서 adopt 함수를 실행한다.
-            return tokenInstance.transfer(address_to, how_many, { from: App.account });
+            return tokenInstance.transfer(address_to, how_many, { from: App2.account });
 
 
         })
@@ -220,11 +219,11 @@ App = {
         //처음 주소를 가져온다.
         var account = accounts[0]; /// 내계좌주소..
 
-        App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+        App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
           .then(function(instance) {
             fundingInstance = instance;
 
-            return fundingInstance.checkGoalReached({ from: App.account });
+            return fundingInstance.checkGoalReached({ from: App2.account });
           })
           .catch(function(err) {
             console.log(err.message);
@@ -243,13 +242,13 @@ App = {
         //처음 주소를 가져온다.
         var account = accounts[0]; /// 내계좌주소..
 
-        App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+        App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
           .then(function(instance) {
             fundingInstance = instance;
 
             console.log(fundingInstance.amountRaised)
 
-            return fundingInstance.safeWithdrawal({ from: App.account });
+            return fundingInstance.safeWithdrawal({ from: App2.account });
 
           })
           .catch(function(err) {
@@ -270,7 +269,7 @@ App = {
           //처음 주소를 가져온다.
           var account = accounts[0]; /// 내계좌주소..
 
-          App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+          App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
             .then(function(instance) {
               fundingInstance = instance;
               return fundingInstance.amountRaised();
@@ -299,7 +298,7 @@ App = {
             //처음 주소를 가져온다.
             var account = accounts[0]; /// 내계좌주소..
 
-            App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+            App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
               .then(function(instance) {
                 fundingInstance = instance;
                 return fundingInstance.beneficiary();
@@ -327,7 +326,7 @@ App = {
               //처음 주소를 가져온다.
               var account = accounts[0]; /// 내계좌주소..
 
-              App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+              App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
                 .then(function(instance) {
                   fundingInstance = instance;
                   return fundingInstance.crowdsaleClosed();
@@ -355,7 +354,7 @@ App = {
                 //처음 주소를 가져온다.
                 var account = accounts[0]; /// 내계좌주소..
 
-                App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+                App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
                   .then(function(instance) {
                     fundingInstance = instance;
                     return fundingInstance.deadline();
@@ -383,7 +382,7 @@ App = {
                   //처음 주소를 가져온다.
                   var account = accounts[0]; /// 내계좌주소..
 
-                  App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+                  App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
                     .then(function(instance) {
                       fundingInstance = instance;
                       return fundingInstance.fundingGoal();
@@ -411,7 +410,7 @@ App = {
                     //처음 주소를 가져온다.
                     var account = accounts[0]; /// 내계좌주소..
 
-                    App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+                    App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
                       .then(function(instance) {
                         fundingInstance = instance;
                         return fundingInstance.fundingGoalReached();
@@ -439,7 +438,7 @@ App = {
                       //처음 주소를 가져온다.
                       var account = accounts[0]; /// 내계좌주소..
 
-                      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+                      App2.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
                         .then(function(instance) {
                           fundingInstance = instance;
                           return fundingInstance.price();
@@ -456,4 +455,4 @@ App = {
 
                   } //price 끝
 
-  }; //App닫는거
+  }; //App2닫는거
