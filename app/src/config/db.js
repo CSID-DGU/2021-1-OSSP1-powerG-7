@@ -1,4 +1,3 @@
-//db 수정해야
 const mysql = require("mysql2");
 
 let db =  mysql.createConnection({
@@ -15,8 +14,7 @@ db.connect(function (err) {
 
     let query1 = 'use powerg;'
     let query2 = 'create table if not exists users(id varchar(10), name varchar(10), pw varchar(10));';
-    
-    let query3 = 'insert into users(id, name, pw) values (\'developer\', \'dev\', \'7777\');'
+    let query3='insert into users (id,name,pw) select \'developer\', \'dev\', \'7777\' from dual where not exists (select * from users where id=\'developer\' and name=\'dev\' and pw=\'7777\');';
 
 
     db.query(query1, function (err, results, fields) {
