@@ -29,10 +29,9 @@
 	<script src="/js/dev/web3.min.js"></script>
 	<script src="/js/dev/truffle-contract.js"></script>
 	<script src="/js/dev/app.js" defer></script>
-  	<script src="/js/dev/app_meta.js"></script>
+  <script src="/js/dev/app_meta.js"></script>
 </head>
 <body onload="App.init(); App_meta.init_meta();">
-  
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -125,9 +124,9 @@
 
 		<!-- 목표 -->
 		<div class="col-sm col-md-6">
-			<div><b class="fs-5">D - 8</b></div>
+			<div><b class="fs-5">D - 8 (기한 : <span id="fd_dline"></span>)</b></div>
 			<div>
-				<b class="fs-1">0</b>
+				<b class="fs-1" id="pgnum_1"></b>
 				<b class="fs-4">% 달성</b>
 				<b class="fs-3">/</b> 최대 200%
 				<!-- 물음표(?) 아이콘 -->
@@ -144,17 +143,22 @@
 			<!-- progress bar -->
 			<!-- https://getbootstrap.com/docs/5.0/components/progress/ -->
 			<div class="progress">
-				<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+				<div id="pgbar_1"class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width:0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
-			<p class="mt-2">총 장 주문되었습니다.</p>
+      (목표액 : <span id="fd_goal"></span>)<br>
+      <b class="fs-4">가격 : <span id="fd_price"></span></b>
+			<p class="mt-2">총 <span id="fd_nowAmount"></span>장 주문되었습니다.</p>
 
-    <button class="enableEthereumButton">내 계좌</button><br/>
+
+
+    <button class="enableEthereumButton">연결된 계정확인</button><br/>
     <h4>Account: <span class="showAccount"></span></h4><br/>
 
-      식당 계좌 주소: <input type="text" id="_address_to" size="20"/><br/>
-      송금할 이더 : &nbsp;&nbsp;&nbsp;<input type="text" id="_how_many" size="20"/><br/>
+    식당 계좌 주소: <input type="text" id="eth_address_to" size="20"/><br/>
+    송금할 이더 : &nbsp;&nbsp;&nbsp;<input type="text" id="eth_how_many" size="20"/><br/>
     <button style="margin-top:5px" class="sendEthButton btn btn-warning btn-lg px-4">송금하기</button>
-      <!--<a href="index0.html" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>-->
+
+  <!--<a href="index0.html" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>-->
       <!--
 			<% if(is_logined == false){ %>
 				<a href="/login" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>
