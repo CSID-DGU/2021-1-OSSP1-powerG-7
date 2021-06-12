@@ -129,22 +129,26 @@
 				<!-- style = "width 0%" 가 보이는 이미지를 설정하고 aria-valuenow, aria-valuemin, aria-valuemax는 accessibility를 의해 존재 -->
 				<!-- progress bar 2개: -->
 				<div class="progress">
-					<!-- (2) 100% ~ max%. 125% 일 경우 25%. (width: current% - min%)-->
+                    <div id="pgbar_1" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" 
+					style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    <!--
+					<!-- (2) 100% ~ max%. 125% 일 경우 25%. (width: current% - min%)
 					<div class="progress-bar bg-secondary" role="progressbar" 
 					style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-					<!-- (1) 0% ~ min%. 125%일 경우 75%. (width: if(current% <= min%) current%, else (max% - current%)) -->
+					<!-- (1) 0% ~ min%. 125%일 경우 75%. (width: if(current% <= min%) current%, else (max% - current%)) 
 					<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" 
 					style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    -->
 				</div>
 				<div class="card-body">
-					<span class="fs-8 card-text">D - 8</span>
+					<span class="fs-8 card-text"><span id="fd_dline"></span>까지</span>
 					<h5 class="card-title"><b>다시 열린 하얀집</b></h5>
-					<p class="progress-percentage fs-3 text-end text-muted">75%<span class="fs-6"> 달성</span></p></br>
+					<p class="progress-percentage fs-3 text-end text-muted"><span id="pgnum_1"></span>%<span class="fs-6"> 달성</span></p></br>
 					<p class="card-text text-muted">복분자주가 맛있는 충무로 술집</p>
 				</div>
 				<div class="card-footer">
 					<a href="/shop/1" class="btn btn-warning px-3 mt-auto"><b>자세히 보기</b></a>
-					<span class="card-text">총 15장 주문되었습니다.</span>
+					<span class="card-text">총 <span id="fd_nowAmount"></span>장 주문되었습니다.</span>
 				</div>
 			</div>
 		</div>
