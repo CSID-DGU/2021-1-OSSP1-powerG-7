@@ -31,8 +31,8 @@ sendEthButton.addEventListener('click', () => {
       params: [
         {
           from: account,
-          to: $('#_address_to').val(),
-          value: (10**18 * parseInt($('#_how_many').val())).toString(16) , // 16진수
+          to: $('#eth_address_to').val(),
+          value: (10**18 * parseInt($('#eth_how_many').val())).toString(16) , // 16진수
          // gasPrice: '0x09184e72a000',
           //gas: '0x2710',
         },
