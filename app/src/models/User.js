@@ -25,12 +25,19 @@ class User {
 
     async register() {
         const client = this.body;
-        try {
-            const response = await UserStorage.save(client);
-            console.log(response);
-            return response;
-        } catch (err) {
-            return { success: false, msg: err };
+        console.log(client.id);
+        if(await UserStorage.getUserInfo(client.id)){
+           // const {id}=UserStorage.getUserInfo(client.id)
+            return {success : false, msg : "중복된 아이디입니다."};
+        }
+        else {
+            try {
+                const response = await UserStorage.save(client);
+                console.log(response);
+                return response;
+            } catch (err) {
+                return { success: false, msg: err };
+            }
         }
     }
 }
