@@ -87,8 +87,7 @@ App = {
           return fundingInstance.amountRaised();
 
         }).then(function(amountRaised){ //현채 참여수?
-          //nowAmount = amountRaised;
-          nowAmount = 5;
+          nowAmount = amountRaised;
           $('#fd_nowAmount').html("" + amountRaised / 10**18);
           console.log("amountRaised: "  + amountRaised);
 
@@ -122,8 +121,7 @@ App = {
           return fundingInstance.fundingGoal();
 
         }).then(function(fundingGoal){   //목표금액
-          //goal = fundingGoal;
-          goal = 30;  //임시값 넣어
+          goal = fundingGoal;
           nowprogress = parseInt(nowAmount/goal*100); //펀딩 진행률 (소수점은 날림)
           console.log("nowprogress: "  + nowprogress);
           $('#pgbar_1').attr("style", "width:"+nowprogress+"%"); //게이지바 진행률 변경
