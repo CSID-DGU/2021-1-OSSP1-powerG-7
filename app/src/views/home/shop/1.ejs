@@ -157,8 +157,14 @@
 
     식당 계좌 주소: <input type="text" id="eth_address_to" size="20"/><br/>
     송금할 이더 : &nbsp;&nbsp;&nbsp;<input type="text" id="eth_how_many" size="20"/><br/>
+    
+    <% if(is_logined == true){ %>
     <button style="margin-top:5px" class="sendEthButton btn btn-warning btn-lg px-4">송금하기</button>
-
+    <% }else{ %>
+    <br><h6>--주문하기를 이용하려면 로그인이 필요합니다--</h6><br/>
+    <% } %>
+    
+    
   <!--<a href="index0.html" class="btn btn-warning btn-lg px-4"><b>쿠폰 주문</b></a>-->
       <!--
 			<% if(is_logined == false){ %>
