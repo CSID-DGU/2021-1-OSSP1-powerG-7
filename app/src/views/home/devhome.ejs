@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <!-- 글씨체 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .img {
+            position: relative;
+            background-color: orange;
+            height: 600px;
+            width: 100%;
+            background-size: cover;
+        }
+
+        .img .content {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            font-size: 5rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .contents {
+            position: relative;
+            background-color: white;
+            height: 350px;
+            width: 100%;
+            background-size: cover;
+        }
+
+        .funding-content {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            font-size: 1rem;
+            color: black;
+            z-index: 2;
+        }
+
+        .filter {
+            position: absolute;
+            height: 30%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .restSection {
+            border: 0px solid;
+            object-fit: cover;
+            width: 355px;
+            height: 370px;
+            float: left;
+        }
+
+        /* .sectionContents{
+            padding-bottom : 20px;
+        } */
+        .sectionImg {
+            width: 355px;
+            height: 370px;
+            object-fit: fill;
+        }
+
+        .hover_effect_box {
+            width: 355px;
+            height: 370px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+            -moz-box-shadow: 1px 1px 2px #e6e6e6;
+            box-shadow: 1px 1px 2px #e6e6e6;
+            cursor: default;
+            background: orange;
+            box-sizing: initial;
+        }
+
+        .hover_effect_box * {
+            box-sizing: initial;
+        }
+
+        .hover_effect_box .caption,
+        .hover_effect_box .mask {
+            width: 355px;
+            height: 370px;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .hover_effect_box .content_bg {
+            display: block;
+            position: relative;
+        }
+
+        .hover_effect_box .caption_title {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 20px 0 0 0;
+        }
+
+        .hover_effect_box .caption_desc {
+            font-size: 0.9em;
+            line-height: 1.5;
+            position: relative;
+            color: #fff;
+            padding: 30px 20px 40px;
+            text-align: center;
+        }
+
+        .hover_effect_box .caption_link {
+            display: inline-block;
+            text-decoration: none;
+            padding: 7px 14px;
+            background: white;
+            color: orange;
+            text-transform: uppercase;
+            -webkit-box-shadow: 0 0 1px #000;
+            -moz-box-shadow: 0 0 1px #000;
+            box-shadow: 0 0 1px #000;
+        }
+
+        .hover_effect_box .caption_link:hover {
+            -webkit-box-shadow: 0 0 5px #000;
+            -moz-box-shadow: 0 0 5px #000;
+            box-shadow: 0 0 5px #000;
+        }
+
+        .hover_effect_7 .content_bg {
+            -webkit-transform: scaleY(1);
+            -moz-transform: scaleY(1);
+            -o-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+            transform: scaleY(1);
+            -webkit-transition: all 0.7s ease-in-out;
+            -moz-transition: all 0.7s ease-in-out;
+            -o-transition: all 0.7s ease-in-out;
+            -ms-transition: all 0.7s ease-in-out;
+            transition: all 0.7s ease-in-out;
+        }
+
+        .hover_effect_7 .caption {
+            background-color: rgba(255, 231, 179, 0.3);
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+
+        .hover_effect_7 .caption_title {
+            background: transparent;
+            margin: 100px 40px 0px 40px;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -o-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            color: white;
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+
+        .hover_effect_7 .caption_desc {
+            color: white;
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            opacity: 0;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -o-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+        }
+
+        .hover_effect_7 .caption_link {
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            opacity: 0;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -o-transform: scale(0);
+            -ms-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+        }
+
+        .hover_effect_7:hover .content_bg {
+            -webkit-transform: scale(10);
+            -moz-transform: scale(10);
+            -o-transform: scale(10);
+            -ms-transform: scale(10);
+            transform: scale(10);
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+
+        .hover_effect_7:hover .caption {
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            filter: alpha(opacity=100);
+            opacity: 1;
+        }
+
+        .hover_effect_7:hover .caption_title,
+        .hover_effect_7:hover .caption_desc,
+        .hover_effect_7:hover .caption_link {
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -o-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+            -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            filter: alpha(opacity=100);
+            opacity: 1;
+        }
+
+        /* .goRestButton{
+            float:right; 
+            background-color:orange; 
+            border : 0px; 
+            padding : 5px; 
+            padding-left : 12px; 
+            padding-right : 12px;
+            color : white;
+            box-shadow : 1px 1px 5px darkgray;
+        } */
+    </style>
+
+    <title>서애로 선결제 시스템</title>
+</head>
+
+<body>
+
+    <!-- Optional JavaScript; Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+    <script src="/js/home/login.js" defer></script>
+    <script src="/config/db.js" defer></script>
+    <!-- 네이게이션바 부분_부트스트랩 활용 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="box-shadow:0px 1px 8px grey">
+        <div class="container-fluid" style="margin-left : 30px; margin-right : 30px">
+            <a class="navbar-brand" href="/"><b>PowerG</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button><!-- 화면 가로폭이 좁을 경우 네비바의 메뉴들이 드롭 다운 형식으로 바뀌게 되고 그 메뉴를 열기 위한 버튼 -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/overview" style="color:black">제휴 식당</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/FAQ" style="color:black">FAQ</a>
+                    </li>
+                    <% if(is_logined==false){ %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login" style="color:black">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register" style="color:black">회원가입</a>
+                        </li>
+                        <% }else{ %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/mypage" style="color:black">Mypage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout" style="color:black">로그아웃</a>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 네비바 끝
+        코드 출처 : https://getbootstrap.com/docs/5.0/components/navbar/
+            (부트스트랩 홈페이지 docs->navbar페이지에서 nav항목)
+    -->
+    <!-- 본문 내용이 네비바 밑으로 위치할 수 있도록 하는 공백 역할 -->
+    <div class="container-fluid" style="margin-top:50px"></div>
+
+    <div class="img">
+        <div class="content">
+            <h1 style="color:white">서애로 선결제 시스템</h1>
+            <hr style="border: thin solid white; width: 90%">
+            </hr>
+            <h4 style="color:white">동국대 맛집을 할인된 가격에 만나보세요</h4>
+        </div>
+    </div>
+
+    <!-- <div class="contents" style="padding:20px">
+            <div class="funding-content">
+                <h1>펀딩 참여</h1>
+                <p></p>
+                <h4>FAQ를 참고 해주세요 :)</h4>
+            </div>
+    </div>   -->
+
+    <div class="restSection">
+        <div class="hover_effect_box hover_effect_7">
+            <div class="content_bg">
+                <!--배경 이미지-->
+                <img src="/home/image/1/reWhitehouse.jpeg" class="sectionImg">
+            </div>
+            <div class="caption">
+                <div class="caption_title">다시 열린 하얀집</div>
+                <div class="caption_desc">
+                    충무로의 대표술집을<br>
+                    할인된 가격에 만나보세요 !<br>
+                </div>
+                <a href="/shop/1" class="caption_link">Click</a>
+            </div>
+        </div>
+        <!-- <div class="sectionContents">
+            <h4>다시 열린 하얀집</h4>
+            <p>복분자주가 맛있는 <br>충무로 술집</p>
+            <input type="button" name="rest1" value="주문하기" onclick="location.href='/shop/1'" class="goRestButton"></input>
+        </div> -->
+    </div>
+
+    <div class="restSection">
+        <div class="hover_effect_box hover_effect_7">
+            <div class="content_bg">
+                <!--배경 이미지-->
+                <img src="/home/image/2/ciabattamongs.jpg" class="sectionImg">
+            </div>
+            <div class="caption">
+                <div class="caption_title">치아바타 몽스</div>
+                <div class="caption_desc">
+                    매일 직접 구운 치아바타를<br>
+                    할인된 가격에 만나보세요 !<br>
+                </div>
+                <a href="/shop/2" class="caption_link">Click</a>
+            </div>
+        </div>
+        <!-- <div class="sectionContents">
+            <h4>치아바타 몽스</h4>
+            <p>매일 직접 구운 치아바타를 <br>사용하는 이탈리아 음식점</p>
+            <input type="button" name="rest2" value="주문하기" onclick="location.href='/shop/2'" class="goRestButton"></input>
+        </div> -->
+    </div>
+
+    <div class="restSection">
+        <div class="hover_effect_box hover_effect_7">
+            <div class="content_bg">
+                <!--배경 이미지-->
+                <img src="/home/image/3/gimchiman.jpg" class="sectionImg">
+            </div>
+            <div class="caption">
+                <div class="caption_title">김치만 선생</div>
+                <div class="caption_desc">
+                    충무로 대표 돼지김치찌개를<br>
+                    할인된 가격에 만나보세요 !<br>
+                </div>
+                <a href="/shop/3" class="caption_link">Click</a>
+            </div>
+        </div>
+        <!-- <div class="sectionContents">
+            <h4>김치만선생</h4>
+            <p>충무로의 돼지고기김치찌개 전문점</p>
+            <input type="button" name="rest3" value="주문하기" onclick="location.href='/shop/3'" class="goRestButton"></input>
+        </div> -->
+    </div>
+
+    <div class="restSection">
+        <div class="hover_effect_box hover_effect_7">
+            <div class="content_bg">
+                <!--배경 이미지-->
+                <img src="/home/image/4/bokhyangwon.jpg" class="sectionImg">
+            </div>
+            <div class="caption">
+                <div class="caption_title">복향원</div>
+                <div class="caption_desc">
+                    마라탕과 꿔바로우가 맛있는 복향원을<br>
+                    할인된 가격에 만나보세요 !<br>
+                </div>
+                <a href="/shop/4" class="caption_link">Click</a>
+            </div>
+        </div>
+        <!-- <div class="sectionContents">
+            <h4>복향원</h4>
+            <p>마라탕과 꿔바로우가 <br>맛있는 중식당</p>
+            <input type="button" name="rest1" value="주문하기" onclick="location.href='/shop/4'" class="goRestButton"></input>
+        </div> -->
+    </div>
+    <a href="/dev">Devpage</a>
+</body>
+
+</html>
