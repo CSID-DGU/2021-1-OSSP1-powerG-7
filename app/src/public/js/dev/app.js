@@ -3,6 +3,11 @@
 //    alert('Hello world');
 //})
 
+var nowAmount;
+var now = new Date();
+var goal;
+var nowprogress;
+
 App = {
     web3Provider: null,
     contracts: {},
@@ -45,7 +50,9 @@ App = {
         $("#accountAddress").html("Your Account: " + account);
       }
     });
-    $(document).on("click", ".btn-start", App.startcontract);
+    $(document).ready(App.startcontract);
+    //$(document).on("click", ".btn-start", App.startcontract);
+
   },
 
   startcontract: function(){
@@ -71,6 +78,62 @@ App = {
           $("#accountAddress").html("Your Account: " + account);
         }
       });
+
+
+      //컨트랙트 정보 받아오기
+      App.contracts.newCrowdFund.deployed() /// 계약주소인거같음 아마도...
+        .then(function(instance) {
+          fundingInstance = instance;
+          return fundingInstance.amountRaised();
+
+        }).then(function(amountRaised){ //현채 참여수?
+          //nowAmount = amountRaised;
+          nowAmount = 5;
+          $('#fd_nowAmount').html("" + amountRaised / 10**18);
+          console.log("amountRaised: "  + amountRaised);
+
+          return fundingInstance.beneficiary();
+
+        }).then(function(beneficiary){  //펀딩 컨트랙트 주소
+        //$('#fd_beneficiary').html(" " + beneficiary);
+        console.log("beneiciary: "  + beneficiary);
+
+          return fundingInstance.deadline();
+
+        }).then(function(deadline){   //마감기한
+          $('#fd_dline').html("" + deadline);
+          console.log("deadline: "  + deadline);
+
+          return fundingInstance.fundingGoal();
+
+        }).then(function(fundingGoal){   //목표금액
+          //goal = fundingGoal;
+          goal = 30;  //임시값 넣어
+          nowprogress = parseInt(nowAmount/goal*100); //펀딩 진행률 (소수점은 날림)
+          console.log("nowprogress: "  + nowprogress);
+          $('#pgbar_1').attr("style", "width:"+nowprogress+"%"); //게이지바 진행률 변경
+          $('#pgnum_1').html("" + nowprogress);
+          $('#fd_goal').html("" + fundingGoal / 10**18);
+          console.log("fundingGoal: "  + fundingGoal);
+
+          return fundingInstance.fundingGoalReached();
+
+        }).then(function(fundingGoalReached){   //목표달성여부
+          //var test = amountRaised;
+          //$('#fd_goalReached').html("" + fundingGoalReached);
+          console.log("fundingGoalReached: "  + fundingGoalReached);
+
+          return fundingInstance.price();
+
+        }).then(function(price){  //펀딩금액
+          //var test = amountRaised;
+          $('#fd_price').html("" + price / 10**18 + " ether");
+          console.log("price: "  + price);
+        })
+        .catch(function(err) {
+          console.log(err.message);
+        });//컨트랙트정보받아오기
+
     $(document).on("click", ".btn-token", App.handleToken);
     $(document).on("click", ".btn-checkGoal", App.checkGoal);
       $(document).on("click", ".btn-sendEther", App.sendEther);
@@ -114,10 +177,18 @@ App = {
           .then(function(instance) {
             tokenInstance = instance;
 
+            return fundingInstance.amountRaised();
+
+          }).then(function(amountRaised){ //현채 참여수
+            //var test = amountRaised;
+            amountRaised = amountRaised + 1;
+            console.log("amountRaised: "  + amountRaised);
+
             // 펀딩주소, 토큰 개수, account를 넣어서 adopt 함수를 실행한다.
             return tokenInstance.transfer(address_to, how_many, { from: App.account });
-          })
 
+
+        })
           .catch(function(err) {
             console.log(err.message);
           });
