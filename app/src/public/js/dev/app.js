@@ -135,7 +135,8 @@ App = {
 
         }).then(function(fundingGoalReached){   //목표달성여부
           //var test = amountRaised;
-          //$('#fd_goalReached').html("" + fundingGoalReached);
+          if(fundingGoalReached) $('#fd_goalReached').html("펀딩 달성!");
+		  else $('#fd_goalReached').html("펀딩 진행중...");
           console.log("fundingGoalReached: "  + fundingGoalReached);
 
           return fundingInstance.price();
