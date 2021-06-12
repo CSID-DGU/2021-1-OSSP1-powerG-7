@@ -101,6 +101,21 @@ App = {
           return fundingInstance.deadline();
 
         }).then(function(deadline){   //마감기한
+          
+          function change_date(t) {
+            var date2 = new Date(t*1000);
+            var year = date2.getFullYear();
+            var month = "0" + (date2.getMonth()+1);
+            var day="0"+date2.getDate();
+            var hour="0"+date2.getHours();
+            var minute="0"+date2.getMinutes();
+            var second = "0"+date2.getSeconds();
+            return year+"년 "+month.substr(-2)+"월 "+day.substr(-2)+"일 "
+            +hour.substr(-2)+"시 "+minute.substr(-2)+"분 "+second.substr(-2)+"초";
+            }
+
+            deadline = change_date(deadline);
+          
           $('#fd_dline').html("" + deadline);
           console.log("deadline: "  + deadline);
 
