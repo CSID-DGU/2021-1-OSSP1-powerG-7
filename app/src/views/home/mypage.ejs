@@ -160,20 +160,7 @@
     	 <thead>
     	 	<tr>
     	 		<th scope="col">주소 : 
-	<script type="text/javascript">
-   
-    var Web3 = require('web3');
-    var web3 = new Web3();
-    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545/")); // 가나슈 서버번호랑 일치시키기
-
-	function findaddress() { 
-		var list = web3.eth.accounts;
-		var address = list[0];
-	}
-
-	//document.write(findaddress);
-	document.write(web3.eth.accounts[0]); //계좌 주소
-	</script>
+	<span id="meta_account"></span>
 				 </th>
     	 	</tr>
     	 </thead>
