@@ -23,6 +23,14 @@ web3.eth.getAccounts(function(error, accounts) {
   //처음 주소를 가져온다.
   var account = accounts[0]; /// 내계좌주소..
 //$('#_address_to')
+    
+getAccount_mypage();//마이페이지 지갑 주소 출력
+async function getAccount_mypage() {
+const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+const account = accounts[0];
+$("#meta_account").html("" + account);
+}
+    
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
   ethereum
